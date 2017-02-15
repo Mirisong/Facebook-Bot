@@ -1,0 +1,40 @@
+{
+	"manifest_version": 2,
+	"name": "Facebook Group Bot",
+	"version": "1.0",
+
+	"description": "Facebook Group Bot",
+
+	"icons": {
+		"48": "icons/down.svg"
+	},
+
+	"background": {
+		"scripts": [
+			"/background/misc.js",
+			"/background/extractor.js",
+			"/background/deleter.js"
+		]
+	},
+
+	"browser_action": {
+		"browser_style": true,
+		"default_icon": {
+			"16": "icons/down.svg",
+			"32": "icons/down.svg"
+		}
+	},
+
+	"applications": {
+		"gecko": {
+			"id": "fgb-fgb@fgb.fgb"
+		}
+	},
+
+	"permissions": [
+		"https://facebook.com/*",
+		"https://www.facebook.com/*",
+		"*://example.com/",
+		"tabs"
+	]
+}
