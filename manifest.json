@@ -33,8 +33,6 @@
 
 	"permissions": [
 		"https://facebook.com/*",
-		"https://www.facebook.com/*",
-		"*://example.com/",
-		"tabs"
+		"https://www.facebook.com/*"
 	]
 }

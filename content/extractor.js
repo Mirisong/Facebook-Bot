@@ -1,11 +1,9 @@
 
 var links = isExtractablePage() ? extractLinks() : [];
-var port = browser.runtime.connect();
-port.postMessage({
+browser.runtime.sendMessage({
 	to: "extractor",
 	body: links
 });
-port.disconnect();
 
 
 

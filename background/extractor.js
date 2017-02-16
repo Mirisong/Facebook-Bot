@@ -1,6 +1,12 @@
-browser.runtime.onConnect.addListener(receiveConnection);
-
 function extractPosts() {
+	if (browser.runtime.onMessage.hasListener(appendLinks)) {
+		// may happen if the user clicks twice too fast
+		console.log("skipping duplicate extraction");
+		return;
+	}
+
+	browser.runtime.onMessage.addListener(appendLinks);
+
 	let response = browser.tabs.executeScript({
 		"file": "/content/extractor.js"
 	});
@@ -10,14 +16,14 @@ function extractPosts() {
 	);
 }
 
-function receiveConnection(port) {
-	port.onMessage.addListener(receiveMessage);
-}
-
-function receiveMessage(message) {
+function appendLinks(message) {
 	if (message.to === "extractor") {
+		browser.runtime.onMessage.removeListener(appendLinks);
+
 		let newPermalinks = message.body.filter(isPermalink);
 		permalinks = permalinks.concat(newPermalinks);
+		console.log("" + permalinks.length + " permalinks extracted");
+		deletePosts();
 	}
 }
 

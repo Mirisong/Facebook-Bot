@@ -7,7 +7,7 @@ var tickInterval = 500;
 var monitorPulse = undefined;
 
 console.log("deleter injected");
-//start();
+start();
 
 function start()
 {
@@ -119,7 +119,10 @@ function done()
 	{
 		isFinished = true;
 		console.log('delete: done!');
-		//self.port.emit('emit');
+		browser.runtime.sendMessage({
+			to: "deleter",
+			body: window.location.href
+		});
 	}
 }
 
@@ -143,7 +146,7 @@ function getArrow()
 {
 	try
 	{
-		var ancestor = document.getElementsByClassName('userContentWrapper')[0];
+		var ancestor = document.getElementsByClassName('fbUserContent')[0];
 		var arrow = ancestor.firstChild.firstChild.firstChild.firstChild;
 		return arrow;
 	}

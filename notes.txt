@@ -1,2 +1,0 @@
-license
-icon: Google Material Design Icons
