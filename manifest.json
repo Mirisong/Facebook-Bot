@@ -27,12 +27,12 @@
 
 	"applications": {
 		"gecko": {
-			"id": "fgb-fgb@fgb.fgb"
+			"id": "mirisong.facebook.bot@github.com"
 		}
 	},
 
 	"permissions": [
-		"https://facebook.com/*",
-		"https://www.facebook.com/*"
+		"https://www.facebook.com/groups/*/forsaleposts/*",
+		"https://www.facebook.com/groups/*/permalink/*"
 	]
 }
